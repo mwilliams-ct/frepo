@@ -1,0 +1,6 @@
+platform: linux
+image: docker:///ubuntu#14.04
+inputs:
+- name: frepo-source
+run:
+  path: frepo-source/buildscript.sh
