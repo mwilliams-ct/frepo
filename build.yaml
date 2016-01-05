@@ -1,4 +1,5 @@
 platform: linux
+image: docker:///mwilliamsct/ubuntu-frepo
 inputs:
 - name: frepo-source
 run:
