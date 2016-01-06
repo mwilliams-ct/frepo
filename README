@@ -3,3 +3,13 @@ Please do not use this repo.
 It is a slightly modified version of the original repository available
 on CodethinkLabs to let me test the Concourse CI system. I will not be
 keeping it up-to-date with master.
+
+CI Test Details
+===============
+
+With vagrant already installed:
+
+    vagrant up
+    fly set-pipeline -c pipeline.yml -p atom-pipeline --var "git-private-key=$(cat ~/.ssh/id_rsa)" --var "s3-access-key-id=<ACCESS KEY>" --var "s3-secret-access-key=<SECRET KEY>" --var "region-name=<REGION NAME>" --var "bucket-name=<BUCKET NAME>"
+
+Replacing as appropriate. Bucket name will be whatever you call your s3 bucket
