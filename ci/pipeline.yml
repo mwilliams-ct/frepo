@@ -1,0 +1,25 @@
+resources:
+- name: frepo-source
+  type: git
+  source:
+    uri: git://github.com/mwilliams-ct/frepo
+    branch: master
+    private_key: {{git-private-key}}
+- name: frepo-built
+  type: s3
+  source:
+    bucket: {{bucket-name}}
+    region_name: {{region-name}}
+    regexp: frepo
+    access_key_id: {{s3-access-key-id}}
+    secret_access_key: {{s3-secret-access-key}}
+
+jobs:
+- name: build
+  plan:
+  - get: frepo-source
+    trigger: true
+  - task: build
+    file: frepo-source/build.yaml
+  - put: frepo-built
+    params: {from: frepo-source/frepo}
